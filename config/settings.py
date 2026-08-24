@@ -1,10 +1,9 @@
 import os
 from pathlib import Path
 
-# تحديد المسار الأساسي للمشروع
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# قراءة المفتاح السري من بيئة التشغيل مباشرة (لا يوجد .env هنا!)
+# اقرأ الـ SECRET_KEY من بيئة التشغيل (التي ستضعها في Variables على Railway)
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-fallback-key-dev-only')
 
 DEBUG = True
@@ -51,7 +50,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# قاعدة البيانات PostgreSQL
+# قاعدة البيانات
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
