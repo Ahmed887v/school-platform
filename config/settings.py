@@ -1,14 +1,10 @@
 import os
 from pathlib import Path
-#from dotenv import load_dotenv
 
 # تحديد المسار الأساسي للمشروع
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# تحميل ملف البيئة .env
-#load_dotenv()
-
-# قراءة المفتاح السري من ملف .env أو استخدام مفتاح احتياطي للمحاولات المحلية
+# قراءة المفتاح السري من بيئة التشغيل مباشرة (لا يوجد .env هنا!)
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-fallback-key-dev-only')
 
 DEBUG = True
