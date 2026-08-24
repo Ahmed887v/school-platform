@@ -54,7 +54,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # قاعدة البيانات
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+    'default': dj_database_url.config(default=os.environ.get('postgresql://postgres:WCBntOIztbWrMuTlFIQdJdZefGtMFlTz@viaduct.proxy.rlwy.net:56217/railway'))
 }
 
 # التشفير
