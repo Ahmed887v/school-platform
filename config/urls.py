@@ -1,8 +1,10 @@
-from django.urls import path
-from . import views
+from django.contrib import admin
+from django.urls import path, include
+from django.shortcuts import redirect
 
 urlpatterns = [
-    path('login/', views.teacher_login, name='teacher_login'),
-    path('login/student/', views.student_login, name='student_login'),
-    path('register/', views.teacher_register, name='teacher_register'),
+    path('admin/', admin.site.urls),
+    path('accounts/', include('accounts.urls')),
+    path('core/', include('core.urls')),
+    path('', lambda request: redirect('accounts/login/')),
 ]
