@@ -6,7 +6,9 @@ from accounts.models import Teacher, Student
 class Subject(models.Model):
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=20, unique=True)
-    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    
+    # نضيف related_name مختلف لتجنب التعارض
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='subjects_taught')  
 
 class Post(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
@@ -16,14 +18,12 @@ class Post(models.Model):
     expires_at = models.DateTimeField(default=timezone.now() + timedelta(weeks=2))
 
     def save(self, *args, **kwargs):
-        # قاعدة: حجم المنشور لا يزيد عن 10 ميجا
         if self.attachment and self.attachment.size > 10 * 1024 * 1024:
             raise ValueError("حجم المنشور يتجاوز 10 ميجا بايت")
         super().save(*args, **kwargs)
 
     @staticmethod
     def enforce_storage_limit():
-        """حذف الأقدم إذا تجاوز الحجم 60 ميجا"""
         posts = Post.objects.all().order_by('created_at')
         total_size = sum(p.attachment.size for p in posts if p.attachment)
         while total_size > 60 * 1024 * 1024:
@@ -35,7 +35,7 @@ class Quiz(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     grade = models.CharField(max_length=50)
     group_number = models.IntegerField()
-    questions = models.TextField()  # تخزين JSON
+    questions = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
 
@@ -49,3 +49,4 @@ class Alert(models.Model):
     reason = models.TextField()
     alert_number = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
+

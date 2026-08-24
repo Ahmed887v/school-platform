@@ -67,7 +67,7 @@ ENCRYPTION_KEY = b'Base64-Encoded-Fernet-Key-Here-1234567890abcdef'
 
 # ملفات ثابتة
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = []
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

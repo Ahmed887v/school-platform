@@ -6,7 +6,9 @@ class Teacher(models.Model):
     name = models.CharField(max_length=100)
     national_id_encrypted = models.CharField(max_length=255, default='')
     phone_encrypted = models.CharField(max_length=255, default='')
-    subject = models.CharField(max_length=100)
+    
+    # غيرنا الاسم من subject إلى subject_name
+    subject_name = models.CharField(max_length=100)  
 
     def save(self, *args, **kwargs):
         if not self.pk:  # عند الإنشاء فقط
