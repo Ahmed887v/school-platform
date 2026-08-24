@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- يمين: معلومات المعلم -->
+        <div class="col-md-3 bg-light p-3">
+            <h3>{{ teacher.name }}</h3>
+            <p>المادة: {{ teacher.subject }}</p>
+            <p>كود المادة: <b>{{ teacher.subject_code }}</b></p>
+        </div>
+        
+        <!-- منتصف ويسار: القائمة -->
+        <div class="col-md-9">
+            <!-- أولاً: زر إضافة طالب -->
+            <div class="row mb-3">
+                <button class="btn btn-primary" onclick="showAddStudent()">+ إضافة طالب</button>
+            </div>
+            
+            <!-- ثانياً: زر نشر جديد -->
+            <div class="row mb-3">
+                <button class="btn btn-secondary" onclick="showNewPost()">+ نشر جديد</button>
+            </div>
+            
+            <!-- ثالثاً: زر إضافة اختبار -->
+            <div class="row mb-3">
+                <button class="btn btn-info" onclick="showNewQuiz()">+ إضافة اختبار</button>
+            </div>
+
+            <!-- رابعاً: ملخص الجلسة -->
+            <div class="row mb-3">
+                <button class="btn btn-warning" onclick="showSessionSummary()">+ ملخص الجلسة</button>
+            </div>
+
+            <!-- ... باقي التبويبات المطلوبة -->
+            <!-- > الطلاب -->
+            <div class="row mb-3">
+                <button class="btn btn-outline-dark" onclick="openStudents()">> الطلاب</button>
+            </div>
+
+            <!-- تحميل تقرير شامل شهر -->
+            <div class="row mb-3">
+                 <button class="btn btn-success" onclick="downloadReport()">تحميل تقرير شامل شهر</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
