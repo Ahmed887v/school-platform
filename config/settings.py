@@ -1,13 +1,11 @@
 import os
 from pathlib import Path
-from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv()
 
 SECRET_KEY = os.environ.get('t@xkk^u5#718=qoji*f)tpnu%9hy^ul@^g9*7jxg=*pan2@0kw', 'django-insecure-fallback-key-dev-only')
 DEBUG = True
-ALLOWED_HOSTS = ['testuser.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['vernox9887.pythonanywhere.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
