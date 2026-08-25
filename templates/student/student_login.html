@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تسجيل دخول الطالب</title>
+</head>
+<body>
+    <h1>تسجيل دخول الطالب</h1>
+    <form method="post" action="{% url 'student_login' %}">
+        {% csrf_token %}
+        <label>كود المادة:</label>
+        <input type="text" name="subject_code" required>
+        <br>
+        <label>كود الطالب:</label>
+        <input type="text" name="student_code" required>
+        <br>
+        <button type="submit">دخول</button>
+    </form>
+</body>
+</html>

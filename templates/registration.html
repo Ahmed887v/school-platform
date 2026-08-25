@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تسجيل معلم جديد</title>
+</head>
+<body>
+    <h1>تسجيل معلم جديد</h1>
+    <form method="post" action="{% url 'teacher_register' %}">
+        {% csrf_token %}
+        <label>الاسم:</label>
+        <input type="text" name="name" required>
+        <br>
+        <label>الرقم القومي:</label>
+        <input type="text" name="national_id" required>
+        <br>
+        <label>رقم الهاتف:</label>
+        <input type="text" name="phone" required>
+        <br>
+        <label>المادة:</label>
+        <input type="text" name="subject" required>
+        <br>
+        <button type="submit">تسجيل</button>
+    </form>
+</body>
+</html>
