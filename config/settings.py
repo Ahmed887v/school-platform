@@ -1,13 +1,11 @@
 import os
 from pathlib import Path
-import dj_database_url
-
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv()
 
-# اقرأ الـ SECRET_KEY من بيئة التشغيل (التي ستضعها في Variables على Railway)
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-fallback-key-dev-only')
-
+SECRET_KEY = os.environ.get('t@xkk^u5#718=qoji*f)tpnu%9hy^ul@^g9*7jxg=*pan2@0kw', 'django-insecure-fallback-key-dev-only')
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
@@ -52,9 +50,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# قاعدة البيانات
+# قاعدة البيانات (اقرأ من متغيرات البيئة، لا تضع كلمة المرور في الملف!)
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('postgresql://postgres:WCBntOIztbWrMuTlFIQdJdZefGtMFlTz@viaduct.proxy.rlwy.net:56217/railway'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'postgres'),
+        'USER': os.environ.get('DB_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+        'HOST': os.environ.get('DB_HOST', 'db.phlmkhnregstmhvlfkte.supabase.co'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+    }
 }
 
 # التشفير
@@ -62,7 +67,7 @@ ENCRYPTION_KEY = b'Base64-Encoded-Fernet-Key-Here-1234567890abcdef'
 
 # ملفات ثابتة
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static'] if os.path.exists(BASE_DIR / 'static') else []
+STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
